@@ -129,6 +129,9 @@ section h2 {
   box-shadow: 0 10px 20px rgba(0,0,0,0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -136,25 +139,28 @@ section h2 {
   box-shadow: 0 15px 25px rgba(0,0,0,0.8);
 }
 
-.card img, .card svg {
+/* Contenedor fijo para imágenes/SVG */
+.card .image-wrapper {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 16 / 9; /* 🔑 mismo tamaño siempre */
+  overflow: hidden;
+  background: var(--bg-secondary); /* fondo por si carga lento */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .image-wrapper img,
+.card .image-wrapper svg {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.card:hover img, .card:hover svg {
+.card:hover .image-wrapper img,
+.card:hover .image-wrapper svg {
   transform: scale(1.05);
-}
-
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
 }
 
 .card h3 {
@@ -167,9 +173,9 @@ section h2 {
 .card p {
   font-size: 0.95rem;
   padding: 0 1rem 1rem;
+  flex-grow: 1;
 }
 
-/* Card link */
 .card a {
   display: inline-block;
   margin: 1rem;
@@ -180,8 +186,7 @@ section h2 {
   font-weight: 600;
   text-align: center;
   transition: all 0.3s ease;
-  z-index: 2;
-  position: relative;
+  align-self: flex-start;
 }
 
 .card a:hover {
