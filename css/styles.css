@@ -259,3 +259,11 @@ footer {
   .contact ul { flex-direction: column; gap: 1rem; }
   .card img, .card svg { height: 140px; }
 }
+.foto-perfil {
+  width: 150px;        /* Ajusta el tamaño */
+  height: auto;        /* Mantiene proporciones */
+  border: 3px solid #333; /* Borde alrededor */
+  border-radius: 50%;  /* Opcional: hace la imagen redonda */
+  display: block;
+  margin: 0 auto 20px; /* Centrada arriba con espacio debajo */
+}
